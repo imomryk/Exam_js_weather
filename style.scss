@@ -7,7 +7,7 @@
 body {
     background-color: cornflowerblue;
     font-family: sans-serif;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -90,8 +90,8 @@ main {
 .slide {
     position: absolute;
     width: 100%;
-    bottom: -55vh;
-    height: 90vh;
+    bottom: 0;
+    height: 35vh;
     z-index: 1;
     // border: 1px solid yellow;
     background-color: white;
@@ -107,7 +107,7 @@ main {
 
         &_switch {
             background-color: yellow;
-            height: 10vh;
+            height: 35%;
             width: 200px;
             display: flex;
             justify-content: center;
@@ -138,15 +138,16 @@ main {
             }
         }
         &_block{
-            height: 20vh;
+            height: 65%;
             background-color: red;
             width: 100%;
             display: flex;
-
+            padding: 2vh 0;
             >div{
                 width: 20%;
                 height: 100%;
                 border:1px solid black;
+                
             }
         }
     }
