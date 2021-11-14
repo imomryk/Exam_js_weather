@@ -1,0 +1,167 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color: cornflowerblue;
+  font-family: sans-serif;
+  height: 100vh;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px 20px;
+  font-size: 17px;
+  font-weight: 600;
+  height: 10vh;
+}
+nav span {
+  color: gray;
+}
+nav span:first-of-type {
+  color: white;
+}
+
+main {
+  height: 90vh;
+  border: 1px solid red;
+  position: relative;
+  width: 100%;
+}
+
+.currentWeather {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  height: 60vh;
+  max-width: 340px;
+  width: 100%;
+  color: white;
+}
+.currentWeather_temp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 55%;
+  font-size: 100px;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.currentWeather_temp span {
+  width: 100%;
+}
+.currentWeather_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 45%;
+  padding-left: 10px;
+  font-size: 18px;
+}
+.currentWeather_info > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 5px;
+}
+.currentWeather_info img {
+  width: 30px;
+  height: 30px;
+  margin-right: 5px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  bottom: -60vh;
+  height: 90vh;
+  z-index: 1;
+  background-color: white;
+}
+.slide .forecast {
+  width: 100%;
+  height: 30vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.slide .forecast_switch {
+  background-color: yellow;
+  height: 10vh;
+  width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.slide .forecast_switch > div {
+  height: 5vh;
+  width: 100px;
+  padding: 5px 0px;
+  border: 1px solid black;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.slide .forecast_switch > div:first-of-type {
+  border-radius: 20px 0 0 20px;
+  border-right: none;
+}
+.slide .forecast_switch > div:last-of-type {
+  border-radius: 0 20px 20px 0;
+  border-left: none;
+}
+.slide .forecast_switch .active {
+  color: white;
+  background-color: black;
+}
+.slide .forecast_block {
+  height: 20vh;
+  background-color: red;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.slide .forecast_block > div {
+  width: 20%;
+  height: 100%;
+  border: 1px solid black;
+}

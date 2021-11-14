@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="content">
+        <nav>
+            <div id="addCityButton">
+                <img src="addCityButton.svg">
+            </div>
+            <div class="currentCity">
+               <span>KIEV, </span>
+               <span>UKRAINE</span> 
+            </div>
+            <div id="deleteCityButton">
+                <img src="deleteCityButton.svg" alt="">
+            </div>
+        </nav>
+        <main>
+            <div class="currentWeather">
+                
+                <div class="currentWeather_temp">
+                    <span>
+                        -12&deg;
+                    </span>
+                    
+                </div>
+                <div class="currentWeather_info">
+                    <div class="currentWeather_info_description">
+                        <img src="deleteCityButton.svg" alt="">
+                        <span>Cloudy</span>
+                    </div>
+                    <div class="currentWeather_info_wind">
+                        <img src="deleteCityButton.svg" alt="">
+                        <span>13 kmph</span>
+                    </div>
+                    <div class="currentWeather_info_description">
+                        <img src="deleteCityButton.svg" alt="">
+                        <span>68%</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="slide">
+                <div class="forecast">
+                    <div class="forecast_switch">
+                        <div class="active">
+                            Daily
+                        </div>
+                        <div>
+                            Hourly
+                        </div>
+                    </div>
+                    <div class="forecast_block">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+<script src="main.js"></script>
+</body>
+
+</html>
