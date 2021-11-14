@@ -8,7 +8,7 @@ body {
     background-color: cornflowerblue;
     font-family: sans-serif;
     height: 100vh;
-    // overflow: hidden;
+    overflow: hidden;
 }
 
 nav {
@@ -41,7 +41,7 @@ main {
     display: flex;
     margin: 0 auto;
     // border: 2px solid green;
-    height: 60vh;
+    height: 55vh;
     max-width: 340px;
     width: 100%;
     // margin-top: 80px;
@@ -90,7 +90,7 @@ main {
 .slide {
     position: absolute;
     width: 100%;
-    bottom: -60vh;
+    bottom: -55vh;
     height: 90vh;
     z-index: 1;
     // border: 1px solid yellow;
@@ -142,7 +142,7 @@ main {
             background-color: red;
             width: 100%;
             display: flex;
-            
+
             >div{
                 width: 20%;
                 height: 100%;
