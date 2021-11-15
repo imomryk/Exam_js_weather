@@ -7,7 +7,7 @@
 body {
     background-color: cornflowerblue;
     font-family: sans-serif;
-    height: 100vh;
+    // height: 100vh;
     // overflow: hidden;
 }
 
@@ -42,71 +42,39 @@ main {
 
 
 .currentWeather {
-    display: grid;
-    grid-template-areas:
-        "temp info"
-        "date date"
-        "time time"
-    ;
-    grid-template-columns: 55% 45%;
-    grid-auto-rows: max-content;
-    align-content: center;
-    margin: 0 auto;
-    // border: 2px solid green;
-    height: 55vh;
+    height: 50vh;
     max-width: 340px;
     width: 100%;
-    // margin-top: 80px;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 
     &_temp {
         display: flex;
-        grid-area: temp;
-
         font-size: 100px;
         justify-content: right;
         align-items: center;
 
-        // border: 1px solid yellow;
         span {
             width: 100%;
         }
     }
 
-    &_info {
-        grid-area: info;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-        padding-left: 10px;
-        font-size: 18px;
-
-        >div {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        img {
-            width: 30px;
-            height: 30px;
-            // border: 1px solid black;
-            margin-right: 5px;
-        }
-
-
-
+    &_description {
+        font-size: 30px;
     }
 
     &_date {
-        grid-area: date;
+
         text-align: center;
         padding-top: 20px;
     }
 
     &_time {
-        grid-area: time;
+
         text-align: center;
         padding-top: 10px;
         font-size: 25px;
@@ -117,8 +85,8 @@ main {
 .slide {
     position: absolute;
     width: 100%;
-    bottom: 0;
-    height: 35vh;
+    bottom: -60vh;
+    height: 100vh;
     z-index: 1;
     // border: 1px solid yellow;
     background-color: white;
@@ -178,6 +146,10 @@ main {
             overflow-x: scroll;
             white-space: nowrap;
 
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
 
         }
 
@@ -196,9 +168,55 @@ main {
             font-size: 18px;
             font-weight: 600;
             color: rgb(24, 23, 23);
-            img{
+
+            img {
                 height: 50%;
             }
+        }
+    }
+}
+
+.fullDescription {
+    height: 60vh;
+    width: 100%;
+    // border: 1px solid red;
+    margin-top: 5vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    row-gap: 10px;
+
+    >div {
+        // border: 1px solid black;
+        display: grid;
+        grid-template-areas:
+            "img value"
+            "desc desc";
+        align-items: center;
+        grid-template-columns: 40% 60%;
+
+        .description_img {
+            grid-area: img;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            img {
+                width: 50px;
+            }
+        }
+
+        .value {
+            grid-area: value;
+            font-size: 25px;
+            text-align: center;
+
+        }
+
+        span {
+            grid-area: desc;
+            color: gray;
+            text-align: center;
         }
     }
 }
