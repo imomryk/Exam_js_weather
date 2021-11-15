@@ -7,8 +7,12 @@
 body {
     background-color: cornflowerblue;
     font-family: sans-serif;
-    height: 100%;
-    overflow: hidden;
+    height: 100vh;
+    // overflow: hidden;
+}
+
+.content {
+    height: 100vh;
 }
 
 nav {
@@ -31,14 +35,22 @@ nav {
 
 main {
     height: 90vh;
-    border: 1px solid red;
+    // border: 1px solid red;
     position: relative;
     width: 100%;
 }
 
 
 .currentWeather {
-    display: flex;
+    display: grid;
+    grid-template-areas:
+        "temp info"
+        "date date"
+        "time time"
+    ;
+    grid-template-columns: 55% 45%;
+    grid-auto-rows: max-content;
+    align-content: center;
     margin: 0 auto;
     // border: 2px solid green;
     height: 55vh;
@@ -49,7 +61,8 @@ main {
 
     &_temp {
         display: flex;
-        width: 55%;
+        grid-area: temp;
+
         font-size: 100px;
         justify-content: right;
         align-items: center;
@@ -61,10 +74,11 @@ main {
     }
 
     &_info {
+        grid-area: info;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 45%;
+
         padding-left: 10px;
         font-size: 18px;
 
@@ -85,6 +99,19 @@ main {
 
     }
 
+    &_date {
+        grid-area: date;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    &_time {
+        grid-area: time;
+        text-align: center;
+        padding-top: 10px;
+        font-size: 25px;
+    }
+
 }
 
 .slide {
@@ -95,6 +122,7 @@ main {
     z-index: 1;
     // border: 1px solid yellow;
     background-color: white;
+    padding: 0 10px;
 
     .forecast {
         width: 100%;
@@ -106,7 +134,7 @@ main {
 
 
         &_switch {
-            background-color: yellow;
+            // background-color: yellow;
             height: 35%;
             width: 200px;
             display: flex;
@@ -114,9 +142,12 @@ main {
             align-items: center;
 
             >div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 height: 5vh;
                 width: 100px;
-                padding: 5px 0px;
+
                 border: 1px solid black;
                 font-size: 1.1rem;
                 text-align: center;
@@ -137,17 +168,36 @@ main {
                 background-color: black;
             }
         }
-        &_block{
+
+        &_block {
             height: 65%;
-            background-color: red;
+            // background-color: red;
             width: 100%;
             display: flex;
-            padding: 2vh 0;
-            >div{
-                width: 20%;
-                height: 100%;
-                border:1px solid black;
-                
+            justify-content: start;
+            overflow-x: scroll;
+            white-space: nowrap;
+
+
+        }
+
+        &_elem {
+            padding: 10px 0;
+            // margin-right: 10px;
+            // box-shadow: 0px 0px 10px 1px rgba(5, 6, 6, 0.2);
+            min-width: 30%;
+            height: 100%;
+            // border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            text-align: center;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 600;
+            color: rgb(24, 23, 23);
+            img{
+                height: 50%;
             }
         }
     }

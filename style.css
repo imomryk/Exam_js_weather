@@ -8,8 +8,11 @@
 body {
   background-color: cornflowerblue;
   font-family: sans-serif;
-  height: 100%;
-  overflow: hidden;
+  height: 100vh;
+}
+
+.content {
+  height: 100vh;
 }
 
 nav {
@@ -36,15 +39,20 @@ nav span:first-of-type {
 
 main {
   height: 90vh;
-  border: 1px solid red;
   position: relative;
   width: 100%;
 }
 
 .currentWeather {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -ms-grid;
+  display: grid;
+      grid-template-areas: "temp info" "date date" "time time";
+  -ms-grid-columns: 55% 45%;
+  grid-template-columns: 55% 45%;
+  grid-auto-rows: -webkit-max-content;
+  grid-auto-rows: max-content;
+  -ms-flex-line-pack: center;
+      align-content: center;
   margin: 0 auto;
   height: 55vh;
   max-width: 340px;
@@ -52,10 +60,12 @@ main {
   color: white;
 }
 .currentWeather_temp {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 55%;
+  grid-area: temp;
   font-size: 100px;
   -webkit-box-pack: right;
       -ms-flex-pack: right;
@@ -68,6 +78,9 @@ main {
   width: 100%;
 }
 .currentWeather_info {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  grid-area: info;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -78,7 +91,6 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 45%;
   padding-left: 10px;
   font-size: 18px;
 }
@@ -96,6 +108,23 @@ main {
   height: 30px;
   margin-right: 5px;
 }
+.currentWeather_date {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: date;
+  text-align: center;
+  padding-top: 20px;
+}
+.currentWeather_time {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: time;
+  text-align: center;
+  padding-top: 10px;
+  font-size: 25px;
+}
 
 .slide {
   position: absolute;
@@ -104,6 +133,7 @@ main {
   height: 35vh;
   z-index: 1;
   background-color: white;
+  padding: 0 10px;
 }
 .slide .forecast {
   width: 100%;
@@ -120,7 +150,6 @@ main {
           align-items: center;
 }
 .slide .forecast_switch {
-  background-color: yellow;
   height: 35%;
   width: 200px;
   display: -webkit-box;
@@ -134,9 +163,17 @@ main {
           align-items: center;
 }
 .slide .forecast_switch > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 5vh;
   width: 100px;
-  padding: 5px 0px;
   border: 1px solid black;
   font-size: 1.1rem;
   text-align: center;
@@ -155,15 +192,37 @@ main {
 }
 .slide .forecast_block {
   height: 65%;
-  background-color: red;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 2vh 0;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  overflow-x: scroll;
+  white-space: nowrap;
 }
-.slide .forecast_block > div {
-  width: 20%;
+.slide .forecast_elem {
+  padding: 10px 0;
+  min-width: 30%;
   height: 100%;
-  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  text-align: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-size: 18px;
+  font-weight: 600;
+  color: #181717;
+}
+.slide .forecast_elem img {
+  height: 50%;
 }
