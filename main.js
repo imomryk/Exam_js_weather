@@ -59,7 +59,7 @@ const getWeatherIcon = function (obj) {
         ["Mist"]: './img/Weather_icons/mist1.svg',
         ["Rain"]: './img/Weather_icons/rain1.svg',
         ["Snow"]: './img/Weather_icons/snow1.svg',
-        ["Thunderstorm"]: './imgs/Weather_icons/thunderstorm1.svg',
+        ["Thunderstorm"]: './img/Weather_icons/thunderstorm1.svg',
     }
 
     if (obj.main == "Mist" || obj.main == "Smoke" || obj.main == "Haze" || obj.main == "Dust" || obj.main == "Fog" || obj.main == "Sand" || obj.main == "Dust" || obj.main == "Ash" || obj.main == "Squall" || obj.main == "Tornado") {
