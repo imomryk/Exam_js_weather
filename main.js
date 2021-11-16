@@ -1,3 +1,33 @@
+localStorage.clear()
+let queryLocal = ["New York","miami"]
+localStorage.setItem("queryLocal", queryLocal)
+// console.log(localStorage)
+// console.log(localStorage.getItem("queryLocal"))
+const queryArr = localStorage.getItem("queryLocal").split(",")
+
+queryArr.forEach((e,index) => {
+    console.log(index)
+    const newSwiperBlock = document.createElement("div")
+    newSwiperBlock.classList.add("swiper-slide")
+    newSwiperBlock.appendChild(document.querySelector(".main_content").cloneNode(true))
+    document.querySelector(".swiper-wrapper").appendChild(newSwiperBlock)
+    fetch(`https://api.geoapify.com/v1/geocode/search?apiKey=24b0b062d3c94efaab4bcca77b291472&text=${e}`, { method: 'GET', })
+        .then(response => response.json())
+        .then(result => {
+            console.log("==>>> ",index, result.query.text)
+            const latitude = result.features[0].geometry.coordinates[1]
+            const longitude = result.features[0].geometry.coordinates[0]
+
+            weatherRequest(latitude, longitude, index+1)
+
+        })
+        .catch(error => console.log('error', error));
+
+
+})
+
+
+
 const swiper = new Swiper('.mainSwiper', {
     effect: "creative",
     creativeEffect: {
@@ -11,11 +41,11 @@ const swiper = new Swiper('.mainSwiper', {
         },
     },
     grabCursor: true,
-    
+
     pagination: {
         el: ".swiper-pagination",
     },
-    
+
 });
 const getWeatherIcon = function (obj) {
     const weatherIcons = {
@@ -59,9 +89,10 @@ navigator.geolocation.getCurrentPosition(e => {
     weatherRequest(latitude, longitude, 0)
 })
 // render Weather
-const renderWeather = function (currObj, temp, dailyArr, timezone, dailyCounter) {
-    const weatherBlock = document.querySelectorAll(".main_content")[0]
-
+const renderWeather = function (currObj, temp, dailyArr, timezone, dailyCounter, indexOfBlock) {
+    console.log(indexOfBlock)
+    const weatherBlock = document.querySelectorAll(".main_content")[indexOfBlock]
+    console.log(weatherBlock.querySelectorAll(".currentWeather_temp"))
     const currentDate = new Date((currObj.dt + timezone) * 1000)
     const sunrise = new Date((dailyArr[dailyCounter].sunrise + timezone) * 1000)
     const sunset = new Date((dailyArr[dailyCounter].sunset + timezone) * 1000)
@@ -83,9 +114,6 @@ const renderWeather = function (currObj, temp, dailyArr, timezone, dailyCounter)
     weatherBlock.querySelector(".clouds").children[1].innerHTML = `${currObj.clouds}%`
 
 
-    console.log(currentDate)
-    console.log(weatherBlock.querySelector(".currentWeather_temp").children[0])
-    console.log(weatherBlock)
 }
 // render daily forecast
 const renderDayliForecast = function (resultWeather, index) {
@@ -115,7 +143,7 @@ const renderDayliForecast = function (resultWeather, index) {
                     e.classList.remove("active_Forecast")
                 })
                 oneDayForecastHelper(e.target).classList.add("active_Forecast")
-                renderWeather(resultWeather.daily[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))], resultWeather.daily[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))].temp.day, resultWeather.daily, resultWeather.timezone_offset, Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target)))
+                renderWeather(resultWeather.daily[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))], resultWeather.daily[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))].temp.day, resultWeather.daily, resultWeather.timezone_offset, Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target)),index)
 
             }
         })
@@ -156,7 +184,7 @@ const renderHourlyWeather = function (resultWeather, index) {
                     e.classList.remove("active_Forecast")
                 })
                 oneDayForecastHelper(e.target).classList.add("active_Forecast")
-                renderWeather(resultWeather.hourly[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))], resultWeather.hourly[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))].temp, resultWeather.daily, resultWeather.timezone_offset, 0)
+                renderWeather(resultWeather.hourly[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))], resultWeather.hourly[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))].temp, resultWeather.daily, resultWeather.timezone_offset, 0,index)
 
             }
         })
@@ -212,7 +240,7 @@ const weatherRequest = function (latitude, longitude, index) {
 
                     // Render weather
                     // renderWeather(resultWeather.daily, 0, resultWeather.timezone_offset)
-                    renderWeather(resultWeather.current, resultWeather.current.temp, resultWeather.daily, resultWeather.timezone_offset, 0)
+                    renderWeather(resultWeather.current, resultWeather.current.temp, resultWeather.daily, resultWeather.timezone_offset, 0,index)
 
 
 

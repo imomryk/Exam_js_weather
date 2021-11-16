@@ -207,7 +207,7 @@ main {
     row-gap: 1px;
 
     >div {
-        border: thin solid #202020;
+        // border: thin solid #202020;
         display: grid;
         grid-template-areas:
             "img value"

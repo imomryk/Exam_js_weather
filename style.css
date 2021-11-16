@@ -166,7 +166,6 @@ main {
   row-gap: 1px;
 }
 .fullDescription > div {
-  border: thin solid #202020;
   display: grid;
   grid-template-areas: "img value" "desc desc";
   align-items: center;
