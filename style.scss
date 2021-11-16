@@ -1,18 +1,27 @@
+:root {
+    --swiper-theme-color: #202020;
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+.swiper{
+    height: 165vh;
+}
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+    bottom: 102vh;
+}
 body {
-    background-color: cornflowerblue;
+    
     font-family: sans-serif;
     // height: 100vh;
     // overflow: hidden;
 }
 
-.content {
+.main_content {
     height: 100vh;
+    background-color: cornflowerblue;
 }
 
 nav {
@@ -42,7 +51,7 @@ main {
 
 
 .currentWeather {
-    height: 50vh;
+    height: 55vh;
     max-width: 340px;
     width: 100%;
     color: white;
@@ -85,7 +94,7 @@ main {
 .slide {
     position: absolute;
     width: 100%;
-    bottom: -60vh;
+    bottom: -65vh;
     height: 100vh;
     z-index: 1;
     // border: 1px solid yellow;
@@ -116,7 +125,7 @@ main {
                 height: 5vh;
                 width: 100px;
 
-                border: 1px solid black;
+                border: 1px solid #282218;
                 font-size: 1.1rem;
                 text-align: center;
 
@@ -133,7 +142,7 @@ main {
 
             .active {
                 color: white;
-                background-color: black;
+                background-color: #332c21;
             }
         }
 
@@ -184,7 +193,7 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(5, 1fr);
-    row-gap: 10px;
+    row-gap: 1px;
 
     >div {
         // border: 1px solid black;
@@ -193,7 +202,7 @@ main {
             "img value"
             "desc desc";
         align-items: center;
-        grid-template-columns: 40% 60%;
+        grid-template-columns: 20% 80%;
 
         .description_img {
             grid-area: img;
@@ -202,18 +211,19 @@ main {
             align-items: center;
 
             img {
-                width: 50px;
+                width: 100%;
             }
         }
 
         .value {
             grid-area: value;
-            font-size: 25px;
+            font-size: 20px;
             text-align: center;
 
         }
 
         span {
+            font-size: 14px;
             grid-area: desc;
             color: gray;
             text-align: center;

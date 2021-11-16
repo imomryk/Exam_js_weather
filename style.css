@@ -1,16 +1,28 @@
+:root {
+  --swiper-theme-color: #202020;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+.swiper {
+  height: 165vh;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: 102vh;
+}
+
 body {
-  background-color: cornflowerblue;
   font-family: sans-serif;
 }
 
-.content {
+.main_content {
   height: 100vh;
+  background-color: cornflowerblue;
 }
 
 nav {
@@ -36,7 +48,7 @@ main {
 }
 
 .currentWeather {
-  height: 50vh;
+  height: 55vh;
   max-width: 340px;
   width: 100%;
   color: white;
@@ -71,7 +83,7 @@ main {
 .slide {
   position: absolute;
   width: 100%;
-  bottom: -60vh;
+  bottom: -65vh;
   height: 100vh;
   z-index: 1;
   background-color: white;
@@ -97,7 +109,7 @@ main {
   align-items: center;
   height: 5vh;
   width: 100px;
-  border: 1px solid black;
+  border: 1px solid #282218;
   font-size: 1.1rem;
   text-align: center;
 }
@@ -111,7 +123,7 @@ main {
 }
 .slide .forecast_switch .active {
   color: white;
-  background-color: black;
+  background-color: #332c21;
 }
 .slide .forecast_block {
   height: 65%;
@@ -148,13 +160,13 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(5, 1fr);
-  row-gap: 10px;
+  row-gap: 1px;
 }
 .fullDescription > div {
   display: grid;
   grid-template-areas: "img value" "desc desc";
   align-items: center;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 20% 80%;
 }
 .fullDescription > div .description_img {
   grid-area: img;
@@ -163,14 +175,15 @@ main {
   align-items: center;
 }
 .fullDescription > div .description_img img {
-  width: 50px;
+  width: 100%;
 }
 .fullDescription > div .value {
   grid-area: value;
-  font-size: 25px;
+  font-size: 20px;
   text-align: center;
 }
 .fullDescription > div span {
+  font-size: 14px;
   grid-area: desc;
   color: gray;
   text-align: center;
