@@ -1,7 +1,4 @@
-const swiper = new Swiper('.swiper', {
-    // spaceBetween: 30,
-    // effect: "cube",
-    // effect: "flip",
+const swiper = new Swiper('.mainSwiper', {
     effect: "creative",
     creativeEffect: {
         prev: {
@@ -14,17 +11,45 @@ const swiper = new Swiper('.swiper', {
         },
     },
     grabCursor: true,
-    // loop: true,
+    
     pagination: {
         el: ".swiper-pagination",
     },
-    // cubeEffect: {
-    //   shadow: true,
-    //   slideShadows: true,
-    //   shadowOffset: 20,
-    //   shadowScale: 0.94,
-    // },
+    
 });
+const getWeatherIcon = function (obj) {
+    const weatherIcons = {
+
+        ["clear day"]: './img/Weather_icons/clear_day.svg',
+        ["clear night"]: './img/Weather_icons/clear_night.svg',
+        ["cloudy day"]: './img/Weather_icons/cloudy_day.svg',
+        ["cloudy night"]: './img/Weather_icons/cloudy_night.svg',
+        ["Clouds"]: './img/Weather_icons/clouds.svg',
+        ["Drizzle"]: './img/Weather_icons/drizzle.svg',
+        ["Mist"]: './img/Weather_icons/mist.svg',
+        ["Rain"]: './img/Weather_icons/rain.svg',
+        ["Snow"]: './img/Weather_icons/snow.svg',
+        ["Thunderstorm"]: './imgs/Weather_icons/thunderstorm.svg',
+    }
+
+    if (obj.main == "Mist" || obj.main == "Smoke" || obj.main == "Haze" || obj.main == "Dust" || obj.main == "Fog" || obj.main == "Sand" || obj.main == "Dust" || obj.main == "Ash" || obj.main == "Squall" || obj.main == "Tornado") {
+        return weatherIcons["Mist"]
+    }
+
+    if (obj.main == "Clear" && obj.icon == "01d") {
+        return weatherIcons["clear day"]
+    } else if (obj.main == "Clear" && obj.icon == "01n") {
+        return weatherIcons["clear night"]
+    }
+
+    if (obj.main == "Clouds" && obj.icon == "02d") {
+        return weatherIcons["cloudy day"]
+    } else if (obj.main == "Clouds" && obj.icon == "02n") {
+        return weatherIcons["cloudy night"]
+    }
+
+    return weatherIcons[obj.main]
+}
 
 const DAYS = ["Sunday", "Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday",]
 
@@ -62,6 +87,88 @@ const renderWeather = function (currObj, temp, dailyArr, timezone, dailyCounter)
     console.log(weatherBlock.querySelector(".currentWeather_temp").children[0])
     console.log(weatherBlock)
 }
+// render daily forecast
+const renderDayliForecast = function (resultWeather, index) {
+    const forecast = document.querySelectorAll(".forecast_block")[index].children[0]
+    forecast.innerHTML = ``
+    for (let i = 0; i < resultWeather.daily.length; i++) {
+        const forecastElem = document.createElement("div")
+        forecastElem.classList.add("swiper-slide")
+        forecastElem.classList.add("forecast_elem")
+
+        const forecastElemDate = new Date((resultWeather.daily[i].dt + resultWeather.timezone_offset) * 1000)
+        forecastElem.innerHTML = `
+                            <span>${DAYS[forecastElemDate.getUTCDay()].toUpperCase()}</span>
+                            <img src=${getWeatherIcon(resultWeather.daily[i].weather[0])} alt="">
+                            <span>${Math.round(resultWeather.daily[i].temp.day)}&deg; ${Math.round(resultWeather.daily[i].temp.night)}&deg;</span>
+                        `
+        forecast.appendChild(forecastElem)
+
+        const oneDayForecastHelper = function (e) {
+            if (e.tagName == "SPAN" || e.tagName == "IMG") {
+                return e.parentElement
+            } else return e
+        }
+        forecastElem.addEventListener("click", (e) => {
+            if (!(oneDayForecastHelper(e.target).classList.contains("active_Forecast"))) {
+                Array.from(forecast.children).forEach(e => {
+                    e.classList.remove("active_Forecast")
+                })
+                oneDayForecastHelper(e.target).classList.add("active_Forecast")
+                renderWeather(resultWeather.daily[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))], resultWeather.daily[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))].temp.day, resultWeather.daily, resultWeather.timezone_offset, Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target)))
+
+            }
+        })
+
+    }
+    const swiper2 = new Swiper(".forecastSwiper", {
+        direction: 'horizontal',
+        nested: true,
+        slidesPerView: 3,
+
+    });
+}
+// render hourly forecast
+const renderHourlyWeather = function (resultWeather, index) {
+    const forecast = document.querySelectorAll(".forecast_block")[index].children[0]
+    forecast.innerHTML = ``
+    for (let i = 0; i < 8; i++) {
+        const forecastElem = document.createElement("div")
+        forecastElem.classList.add("swiper-slide")
+        forecastElem.classList.add("forecast_elem")
+
+        const forecastElemDate = new Date((resultWeather.hourly[i].dt + resultWeather.timezone_offset) * 1000)
+        forecastElem.innerHTML = `
+                            <span>${forecastElemDate.toUTCString().slice(17, 22)}</span>
+                            <img src=${getWeatherIcon(resultWeather.hourly[i].weather[0])} alt="">
+                            <span>${Math.round(resultWeather.hourly[i].temp)}&deg;</span>
+                        `
+        forecast.appendChild(forecastElem)
+
+        const oneDayForecastHelper = function (e) {
+            if (e.tagName == "SPAN" || e.tagName == "IMG") {
+                return e.parentElement
+            } else return e
+        }
+        forecastElem.addEventListener("click", (e) => {
+            if (!(oneDayForecastHelper(e.target).classList.contains("active_Forecast"))) {
+                Array.from(forecast.children).forEach(e => {
+                    e.classList.remove("active_Forecast")
+                })
+                oneDayForecastHelper(e.target).classList.add("active_Forecast")
+                renderWeather(resultWeather.hourly[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))], resultWeather.hourly[Array.from(forecast.children).indexOf(oneDayForecastHelper(e.target))].temp, resultWeather.daily, resultWeather.timezone_offset, 0)
+
+            }
+        })
+
+    }
+    const swiper2 = new Swiper(".forecastSwiper", {
+        direction: 'horizontal',
+        nested: true,
+        slidesPerView: 3,
+
+    });
+}
 const weatherRequest = function (latitude, longitude, index) {
     fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${latitude}&lon=${longitude}&apiKey=24b0b062d3c94efaab4bcca77b291472`, { method: 'GET', })
         .then(response => response.json())
@@ -72,7 +179,7 @@ const weatherRequest = function (latitude, longitude, index) {
             document.querySelectorAll(".currentCity")[index].innerHTML = `<span>${currCity.toUpperCase()}, </span><span>${currCountry}</span>`
 
             // Weather Api
-            fetch(`https://api.openweathermap.org/data/2.5/onecall?exclude=hourly,minutely,alerts&appid=c4c979e5736f06ccaf01358f455ee24e&units=metric&lat=${latitude}&lon=${longitude}`)
+            fetch(`https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,alerts&appid=c4c979e5736f06ccaf01358f455ee24e&units=metric&lat=${latitude}&lon=${longitude}`)
                 .then(response => response.json())
                 .then(resultWeather => {
 
@@ -81,19 +188,27 @@ const weatherRequest = function (latitude, longitude, index) {
                     console.log(date.toISOString())
 
                     // render Forecast
-                    const forecast = document.querySelectorAll(".forecast_block")[index]
-                    forecast.innerHTML = ``
-                    for (let i = 0; i < resultWeather.daily.length; i++) {
-                        const forecastElem = document.createElement("div")
-                        forecastElem.classList.add("forecast_elem")
-                        const forecastElemDate = new Date((resultWeather.daily[i].dt + resultWeather.timezone_offset) * 1000)
-                        forecastElem.innerHTML = `
-                            <span>${DAYS[forecastElemDate.getUTCDay()].toUpperCase()}</span>
-                            <img src="compass-n.svg" alt="">
-                            <span>${Math.round(resultWeather.daily[i].temp.day) }&deg; ${Math.round(resultWeather.daily[i].temp.night)}&deg;</span>
-                        `
-                        forecast.appendChild(forecastElem)
-                    }
+                    renderDayliForecast(resultWeather, index)
+                    const forecastSwither = document.querySelectorAll(".forecast_switch")[index]
+                    Array.from(forecastSwither.children).forEach(e => {
+                        e.addEventListener("click", e => {
+                            if (!(e.target.classList.contains("active"))) {
+                                Array.from(forecastSwither.children).forEach(e => {
+                                    e.classList.remove("active")
+                                })
+                                e.target.classList.add("active")
+                            }
+
+                            if (e.target.innerText == "Daily") {
+                                renderDayliForecast(resultWeather, index)
+                            } else {
+                                renderHourlyWeather(resultWeather, index)
+                            }
+                        })
+                    })
+
+
+
 
                     // Render weather
                     // renderWeather(resultWeather.daily, 0, resultWeather.timezone_offset)
@@ -107,3 +222,4 @@ const weatherRequest = function (latitude, longitude, index) {
         })
         .catch(error => console.log('error', error));
 }
+

@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
-/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="swiper">
+    <div class="swiper mainSwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="main_content">
@@ -28,16 +27,16 @@
                         <div class="deleteCityButton">
                             <img src="deleteCityButton.svg" alt="">
                         </div>
-                        
+
                     </nav>
                     <main>
                         <div class="currentWeather">
-            
+
                             <div class="currentWeather_temp">
                                 <span>
                                     -12&deg;
                                 </span>
-            
+
                             </div>
                             <div class="currentWeather_description">
                                 <span>
@@ -61,113 +60,116 @@
                                         Hourly
                                     </div>
                                 </div>
-                                <div class="forecast_block">
-                                    <div class="forecast_elem">
-                                        <span>MONDAY</span>
-                                        <img src="compass-n.svg" alt="">
-                                        <span>14&deg; 8&deg;</span>
+                                <div class="forecast_block swiper forecastSwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="forecast_elem swiper-slide">
+                                                <span>MONDAY</span>
+                                                <img src="compass-n.svg" alt="">
+                                                <span>14&deg; 8&deg;</span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="forecast_elem swiper-slide">
+                                                <span>MONDAY</span>
+                                                <img src="compass-n.svg" alt="">
+                                                <span>14&deg; 8&deg;</span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="forecast_elem swiper-slide">
+                                                <span>MONDAY</span>
+                                                <img src="compass-n.svg" alt="">
+                                                <span>14&deg; 8&deg;</span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="forecast_elem swiper-slide">
+                                                <span>MONDAY</span>
+                                                <img src="compass-n.svg" alt="">
+                                                <span>14&deg; 8&deg;</span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="forecast_elem swiper-slide">
+                                                <span>MONDAY</span>
+                                                <img src="compass-n.svg" alt="">
+                                                <span>14&deg; 8&deg;</span>
+                                            </div>
+                                        </div>
+
+
                                     </div>
-                                    <div class="forecast_elem">
-                                        <span>MONDAY</span>
-                                        <img src="test.svg" alt="">
-                                        <span>14&deg; 8&deg;</span>
-                                    </div>
-                                    <div class="forecast_elem">
-                                        <span>MONDAY</span>
-                                        <img src="test.svg" alt="">
-                                        <span>14&deg; 8&deg;</span>
-                                    </div>
-                                    <div class="forecast_elem">
-                                        <span>MONDAY</span>
-                                        <img src="test.svg" alt="">
-                                        <span>14&deg; 8&deg;</span>
-                                    </div>
-                                    <div class="forecast_elem">
-                                        <span>MONDAY</span>
-                                        <img src="test.svg" alt="">
-                                        <span>14&deg; 8&deg;</span>
-                                    </div>
-                                    <div class="forecast_elem">
-                                        <span>MONDAY</span>
-                                        <img src="test.svg" alt="">
-                                        <span>14&deg; 8&deg;</span>
-                                    </div>
-                                    <div class="forecast_elem">
-                                        <span>MONDAY</span>
-                                        <img src="test.svg" alt="">
-                                        <span>14&deg; 8&deg;</span>
-                                    </div>
-            
                                 </div>
                             </div>
                             <div class="fullDescription">
                                 <div class="sunrise">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/sunrise.svg" alt="">
                                     </div>
-            
+
                                     <div class="value">06:03</div>
                                     <span>Sunrise</span>
                                 </div>
                                 <div class="sunset">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/sunset.svg" alt="">
                                     </div>
                                     <div class="value">18:45</div>
                                     <span>Sunset</span>
                                 </div>
                                 <div class="day_temp">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/day_temp.svg" alt="">
                                     </div>
                                     <div class="value">12&deg;</div>
                                     <span>Day temperature</span>
                                 </div>
                                 <div class="night_temp">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/Night_temp.svg" alt="">
                                     </div>
                                     <div class="value">-4&deg;</div>
                                     <span>Night temperature</span>
                                 </div>
                                 <div class="pressure">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/pressure.svg" alt="">
                                     </div>
                                     <div class="value">1202 mmHg</div>
                                     <span>Atmospheric pressure</span>
                                 </div>
                                 <div class="humidity">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/humidity.svg" alt="">
                                     </div>
                                     <div class="value">54%</div>
                                     <span>Humidity</span>
                                 </div>
                                 <div class="pop">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/pop.svg" alt="">
                                     </div>
                                     <div class="value">48%</div>
                                     <span>Probability of precipitation</span>
                                 </div>
                                 <div class="uvi">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/uvi.svg" alt="">
                                     </div>
                                     <div class="value">5</div>
                                     <span>UV index</span>
                                 </div>
                                 <div class="wind">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/wind.svg" alt="">
                                     </div>
                                     <div class="value">10 km/h</div>
                                     <span>Wind</span>
                                 </div>
                                 <div class="clouds">
                                     <div class="description_img">
-                                        <img src="img/description/test.svg" alt="">
+                                        <img src="img/description/clouds.svg" alt="">
                                     </div>
                                     <div class="value">68%</div>
                                     <span>Clouds</span>
@@ -190,16 +192,16 @@
                         <div class="deleteCityButton">
                             <img src="deleteCityButton.svg" alt="">
                         </div>
-                        
+
                     </nav>
                     <main>
                         <div class="currentWeather">
-            
+
                             <div class="currentWeather_temp">
                                 <span>
                                     45&deg;
                                 </span>
-            
+
                             </div>
                             <div class="currentWeather_description">
                                 <span>
@@ -259,7 +261,7 @@
                                         <img src="test.svg" alt="">
                                         <span>14&deg; 8&deg;</span>
                                     </div>
-            
+
                                 </div>
                             </div>
                             <div class="fullDescription">
@@ -267,7 +269,7 @@
                                     <!-- <div class="description_img">
                                         <img src="img/description/test.svg" alt="">
                                     </div> -->
-            
+
                                     <div class="value">06:03</div>
                                     <span>Sunrise</span>
                                 </div>
@@ -342,7 +344,7 @@
         </div>
         <div class="swiper-pagination"></div>
     </div>
-    
+
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
 </body>

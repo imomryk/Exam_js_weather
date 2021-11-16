@@ -80,6 +80,16 @@ main {
   font-size: 25px;
 }
 
+.active_Forecast {
+  background-color: #202020;
+}
+.active_Forecast span {
+  color: white;
+}
+.active_Forecast img {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(249deg) brightness(112%) contrast(101%);
+}
+
 .slide {
   position: absolute;
   width: 100%;
@@ -128,17 +138,10 @@ main {
 .slide .forecast_block {
   height: 65%;
   width: 100%;
-  display: flex;
-  justify-content: start;
-  overflow-x: scroll;
-  white-space: nowrap;
-}
-.slide .forecast_block::-webkit-scrollbar {
-  display: none;
 }
 .slide .forecast_elem {
   padding: 10px 0;
-  min-width: 30%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -163,10 +166,11 @@ main {
   row-gap: 1px;
 }
 .fullDescription > div {
+  border: thin solid #202020;
   display: grid;
   grid-template-areas: "img value" "desc desc";
   align-items: center;
-  grid-template-columns: 20% 80%;
+  grid-template-columns: 40% 60%;
 }
 .fullDescription > div .description_img {
   grid-area: img;
@@ -175,12 +179,11 @@ main {
   align-items: center;
 }
 .fullDescription > div .description_img img {
-  width: 100%;
+  width: 50%;
 }
 .fullDescription > div .value {
   grid-area: value;
   font-size: 20px;
-  text-align: center;
 }
 .fullDescription > div span {
   font-size: 14px;

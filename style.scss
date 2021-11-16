@@ -91,6 +91,15 @@ main {
 
 }
 
+.active_Forecast{
+    background-color: #202020;
+    span{
+        color: white;
+    }
+    img{
+        filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(249deg) brightness(112%) contrast(101%);
+    }
+}
 .slide {
     position: absolute;
     width: 100%;
@@ -109,7 +118,9 @@ main {
         flex-direction: column;
         align-items: center;
 
-
+        .swiper-slide{
+            // width: 100px;
+        }
         &_switch {
             // background-color: yellow;
             height: 35%;
@@ -150,14 +161,14 @@ main {
             height: 65%;
             // background-color: red;
             width: 100%;
-            display: flex;
-            justify-content: start;
-            overflow-x: scroll;
-            white-space: nowrap;
+            // display: flex;
+            // justify-content: start;
+            // overflow-x: scroll;
+            // white-space: nowrap;
 
-            &::-webkit-scrollbar {
-                display: none;
-            }
+            // &::-webkit-scrollbar {
+            //     display: none;
+            // }
 
 
         }
@@ -166,7 +177,7 @@ main {
             padding: 10px 0;
             // margin-right: 10px;
             // box-shadow: 0px 0px 10px 1px rgba(5, 6, 6, 0.2);
-            min-width: 30%;
+            width: 100%;
             height: 100%;
             // border: 1px solid black;
             display: flex;
@@ -196,13 +207,13 @@ main {
     row-gap: 1px;
 
     >div {
-        // border: 1px solid black;
+        border: thin solid #202020;
         display: grid;
         grid-template-areas:
             "img value"
             "desc desc";
         align-items: center;
-        grid-template-columns: 20% 80%;
+        grid-template-columns: 40% 60%;
 
         .description_img {
             grid-area: img;
@@ -211,14 +222,14 @@ main {
             align-items: center;
 
             img {
-                width: 100%;
+                width: 50%;
             }
         }
 
         .value {
             grid-area: value;
             font-size: 20px;
-            text-align: center;
+            // text-align: center;
 
         }
 
