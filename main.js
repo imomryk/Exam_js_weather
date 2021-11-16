@@ -50,16 +50,16 @@ const swiper = new Swiper('.mainSwiper', {
 const getWeatherIcon = function (obj) {
     const weatherIcons = {
 
-        ["clear day"]: './img/Weather_icons/clear_day.svg',
-        ["clear night"]: './img/Weather_icons/clear_night.svg',
-        ["cloudy day"]: './img/Weather_icons/cloudy_day.svg',
-        ["cloudy night"]: './img/Weather_icons/cloudy_night.svg',
-        ["Clouds"]: './img/Weather_icons/clouds.svg',
-        ["Drizzle"]: './img/Weather_icons/drizzle.svg',
-        ["Mist"]: './img/Weather_icons/mist.svg',
-        ["Rain"]: './img/Weather_icons/rain.svg',
-        ["Snow"]: './img/Weather_icons/snow.svg',
-        ["Thunderstorm"]: './imgs/Weather_icons/thunderstorm.svg',
+        ["clear day"]: './img/Weather_icons/clear_day1.svg',
+        ["clear night"]: './img/Weather_icons/clear_night1.svg',
+        ["cloudy day"]: './img/Weather_icons/cloudy_day1.svg',
+        ["cloudy night"]: './img/Weather_icons/cloudy_night1.svg',
+        ["Clouds"]: './img/Weather_icons/clouds1.svg',
+        ["Drizzle"]: './img/Weather_icons/drizzle1.svg',
+        ["Mist"]: './img/Weather_icons/mist1.svg',
+        ["Rain"]: './img/Weather_icons/rain1.svg',
+        ["Snow"]: './img/Weather_icons/snow1.svg',
+        ["Thunderstorm"]: './imgs/Weather_icons/thunderstorm1.svg',
     }
 
     if (obj.main == "Mist" || obj.main == "Smoke" || obj.main == "Haze" || obj.main == "Dust" || obj.main == "Fog" || obj.main == "Sand" || obj.main == "Dust" || obj.main == "Ash" || obj.main == "Squall" || obj.main == "Tornado") {
